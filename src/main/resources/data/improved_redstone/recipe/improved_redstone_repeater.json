@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "#G#",
+    "CCC"
+  ],
+  "key": {
+    "#": {
+      "item": "improved_redstone:improved_redstone_torch"
+    },
+    "G": {
+      "item": "improved_redstone:improved_redstone"
+    },
+    "C": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "result": {
+      "item": "improved_redstone:improved_redstone_repeater",
+      "count": 1
+    }
+  }
+}

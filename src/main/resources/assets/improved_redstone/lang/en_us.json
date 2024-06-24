@@ -1,0 +1,11 @@
+{
+  "block.improved_redstone.improved_redstone_lamp": "Improved Redstone Lamp",
+  "block.improved_redstone.improved_redstone_torch": "Improved Redstone Torch",
+  "block.improved_redstone.improved_redstone_wall_torch": "Improved Redstone Wall Torch",
+  "block.improved_redstone.improved_repeater": "Improved Redstone Repeater",
+  "block.improved_redstone.improved_comparator": "Improved Comparator",
+  "block.improved_redstone.improved_observer": "Improved Observer",
+  "item.improved_redstone.improved_redstone": "Improved Redstone Dust",
+  "block.improved_redstone.improved_redstone_block": "Improved Redstone Block",
+  "block.improved_redstone.rgb_panel": "RGB color panel"
+}

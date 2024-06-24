@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "me.zombii.improved_redstone.mixin.client",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "InvertedPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+	}
+}

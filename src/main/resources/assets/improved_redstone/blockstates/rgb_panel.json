@@ -1,0 +1,523 @@
+{
+  "variants": {
+    "facing=north,lit=true,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=true,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_red",
+      "y": 0
+    },
+    "facing=north,lit=true,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_orange",
+      "y": 0
+    },
+    "facing=north,lit=true,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_yellow",
+      "y": 0
+    },
+    "facing=north,lit=true,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_lime",
+      "y": 0
+    },
+    "facing=north,lit=true,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_green",
+      "y": 0
+    },
+    "facing=north,lit=true,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_blue",
+      "y": 0
+    },
+    "facing=north,lit=true,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_blue",
+      "y": 0
+    },
+    "facing=north,lit=true,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_purple",
+      "y": 0
+    },
+    "facing=north,lit=true,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_magenta",
+      "y": 0
+    },
+    "facing=north,lit=true,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_brown",
+      "y": 0
+    },
+    "facing=north,lit=true,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_grey",
+      "y": 0
+    },
+    "facing=north,lit=true,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_grey",
+      "y": 0
+    },
+    "facing=north,lit=true,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_cyan",
+      "y": 0
+    },
+    "facing=north,lit=true,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_pink",
+      "y": 0
+    },
+    "facing=north,lit=true,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_white",
+      "y": 0
+    },
+
+    "facing=east,lit=true,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=true,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_red",
+      "y": 90
+    },
+    "facing=east,lit=true,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_orange",
+      "y": 90
+    },
+    "facing=east,lit=true,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_yellow",
+      "y": 90
+    },
+    "facing=east,lit=true,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_lime",
+      "y": 90
+    },
+    "facing=east,lit=true,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_green",
+      "y": 90
+    },
+    "facing=east,lit=true,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_blue",
+      "y": 90
+    },
+    "facing=east,lit=true,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_blue",
+      "y": 90
+    },
+    "facing=east,lit=true,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_purple",
+      "y": 90
+    },
+    "facing=east,lit=true,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_magenta",
+      "y": 90
+    },
+    "facing=east,lit=true,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_brown",
+      "y": 90
+    },
+    "facing=east,lit=true,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_grey",
+      "y": 90
+    },
+    "facing=east,lit=true,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_grey",
+      "y": 90
+    },
+    "facing=east,lit=true,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_cyan",
+      "y": 90
+    },
+    "facing=east,lit=true,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_pink",
+      "y": 90
+    },
+    "facing=east,lit=true,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_white",
+      "y": 90
+    },
+
+    "facing=south,lit=true,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=true,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_red",
+      "y": 180
+    },
+    "facing=south,lit=true,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_orange",
+      "y": 180
+    },
+    "facing=south,lit=true,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_yellow",
+      "y": 180
+    },
+    "facing=south,lit=true,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_lime",
+      "y": 180
+    },
+    "facing=south,lit=true,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_green",
+      "y": 180
+    },
+    "facing=south,lit=true,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_blue",
+      "y": 180
+    },
+    "facing=south,lit=true,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_blue",
+      "y": 180
+    },
+    "facing=south,lit=true,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_purple",
+      "y": 180
+    },
+    "facing=south,lit=true,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_magenta",
+      "y": 180
+    },
+    "facing=south,lit=true,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_brown",
+      "y": 180
+    },
+    "facing=south,lit=true,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_grey",
+      "y": 180
+    },
+    "facing=south,lit=true,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_grey",
+      "y": 180
+    },
+    "facing=south,lit=true,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_cyan",
+      "y": 180
+    },
+    "facing=south,lit=true,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_pink",
+      "y": 180
+    },
+    "facing=south,lit=true,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_white",
+      "y": 180
+    },
+
+    "facing=west,lit=true,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=true,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_red",
+      "y": 270
+    },
+    "facing=west,lit=true,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_orange",
+      "y": 270
+    },
+    "facing=west,lit=true,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_yellow",
+      "y": 270
+    },
+    "facing=west,lit=true,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_lime",
+      "y": 270
+    },
+    "facing=west,lit=true,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_green",
+      "y": 270
+    },
+    "facing=west,lit=true,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_blue",
+      "y": 270
+    },
+    "facing=west,lit=true,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_blue",
+      "y": 270
+    },
+    "facing=west,lit=true,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_purple",
+      "y": 270
+    },
+    "facing=west,lit=true,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_magenta",
+      "y": 270
+    },
+    "facing=west,lit=true,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_brown",
+      "y": 270
+    },
+    "facing=west,lit=true,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_grey",
+      "y": 270
+    },
+    "facing=west,lit=true,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_light_grey",
+      "y": 270
+    },
+    "facing=west,lit=true,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_cyan",
+      "y": 270
+    },
+    "facing=west,lit=true,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_pink",
+      "y": 270
+    },
+    "facing=west,lit=true,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_white",
+      "y": 270
+    },
+
+    "facing=north,lit=false,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+    "facing=north,lit=false,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 0
+    },
+
+    "facing=east,lit=false,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+    "facing=east,lit=false,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 90
+    },
+
+    "facing=south,lit=false,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+    "facing=south,lit=false,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 180
+    },
+
+    "facing=west,lit=false,power=0": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=1": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=2": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=3": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=4": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=5": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=6": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=7": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=8": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=9": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=10": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=11": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=12": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=13": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=14": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    },
+    "facing=west,lit=false,power=15": {
+      "model": "improved_redstone:block/rgb_panel/rgb_panel_black",
+      "y": 270
+    }
+  }
+}

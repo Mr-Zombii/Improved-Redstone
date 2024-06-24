@@ -1,0 +1,38 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "redstone",
+  "pattern": [
+    "iii",
+    "GRB",
+    "HKZ"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "G": {
+      "item": "improved_redstone:improved_redstone"
+    },
+    "R": {
+      "item": "minecraft:redstone_lamp"
+    },
+    "B": {
+      "item": "minecraft:blaze_powder"
+    },
+    "H": {
+      "item": "minecraft:red_dye"
+    },
+    "K": {
+      "item": "minecraft:green_dye"
+    },
+    "Z": {
+      "item": "minecraft:blue_dye"
+    }
+  },
+  "result": {
+    "result": {
+      "item": "improved_redstone:rgb_panel",
+      "count": 1
+    }
+  }
+}

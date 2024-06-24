@@ -1,0 +1,4 @@
+accessWidener v2 named
+
+accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lnet/minecraft/world/World;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/BlockState;)I
+accessible method net/minecraft/block/ComparatorBlock getAttachedItemFrame (Lnet/minecraft/world/World;Lnet/minecraft/util/math/Direction;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/decoration/ItemFrameEntity;
