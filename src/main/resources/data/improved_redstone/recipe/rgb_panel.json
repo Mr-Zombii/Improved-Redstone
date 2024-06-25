@@ -30,9 +30,7 @@
     }
   },
   "result": {
-    "result": {
-      "id": "improved_redstone:rgb_panel",
-      "count": 1
-    }
+    "id": "improved_redstone:rgb_panel",
+    "count": 1
   }
 }

@@ -17,9 +17,7 @@
     }
   },
   "result": {
-    "result": {
-      "id": "improved_redstone:improved_redstone_repeater",
-      "count": 1
-    }
+    "id": "improved_redstone:improved_comparator",
+    "count": 1
   }
 }

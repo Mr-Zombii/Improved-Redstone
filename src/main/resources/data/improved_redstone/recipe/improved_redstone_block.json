@@ -2,19 +2,17 @@
   "type": "minecraft:crafting_shaped",
   "category": "redstone",
   "pattern": [
-    "#",
-    "/"
+    "GGG",
+    "GGG",
+    "GGG"
   ],
   "key": {
-    "#": {
+    "G": {
       "item": "improved_redstone:improved_redstone"
-    },
-    "/": {
-      "item": "minecraft:stick"
     }
   },
   "result": {
-    "id": "improved_redstone:improved_redstone_torch",
+    "id": "improved_redstone:improved_redstone_block",
     "count": 1
   }
 }
