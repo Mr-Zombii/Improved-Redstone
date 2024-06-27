@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "improved_redstone:improved_redstone_lamp"
+        }
+      ],
+      "rolls": 1
+    }
+  ]
+}

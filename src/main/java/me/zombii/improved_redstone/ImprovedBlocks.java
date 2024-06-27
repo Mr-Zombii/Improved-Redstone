@@ -92,7 +92,7 @@ public class ImprovedBlocks {
                 ImprovedObserverBlock::new,
                 AbstractBlock.Settings.create().mapColor(MapColor.STONE_GRAY)
                         .instrument(NoteBlockInstrument.BASEDRUM).strength(3.0F)
-                        .requiresTool().solidBlock(Blocks::never)
+                        .solidBlock(Blocks::never)
         );
 
         IMPROVED_REDSTONE = register(
@@ -104,7 +104,7 @@ public class ImprovedBlocks {
         IMPROVED_REDSTONE_BLOCK = register(
                 "improved_redstone_block",
                 ImprovedRedstoneBlock::new,
-                AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED).requiresTool()
+                AbstractBlock.Settings.create().mapColor(MapColor.BRIGHT_RED)
                         .strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).solidBlock(Blocks::never)
         );
 
