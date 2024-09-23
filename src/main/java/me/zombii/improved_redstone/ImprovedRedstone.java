@@ -20,6 +20,7 @@ public class ImprovedRedstone implements ModInitializer {
 	public void onInitialize() {
 		ImprovedBlocks.registerBlocks();
 		ImprovedItems.registerItems();
+
 		LOGGER.info("Registered Blocks & Items");
 
 		ItemGroup.Builder builder = ItemGroup.create(ItemGroup.Row.TOP, 5);

@@ -5,6 +5,7 @@ import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.registry.Registries;
@@ -18,6 +19,7 @@ import static net.minecraft.block.Blocks.createLightLevelFromLitBlockState;
 
 public class ImprovedBlocks {
 
+    public static Block POWER_LEVEL_BLOCK;
 
     public static Block IMPROVED_REDSTONE_REPEATER;
     public static Block IMPROVED_REDSTONE_COMPARATOR;
