@@ -4,3 +4,5 @@ accessible method net/minecraft/block/ComparatorBlock calculateOutputSignal (Lne
 accessible method net/minecraft/block/ComparatorBlock getAttachedItemFrame (Lnet/minecraft/world/World;Lnet/minecraft/util/math/Direction;Lnet/minecraft/util/math/BlockPos;)Lnet/minecraft/entity/decoration/ItemFrameEntity;
 accessible field net/minecraft/state/property/IntProperty max I
 accessible field net/minecraft/state/property/IntProperty min I
+accessible method net/minecraft/block/ObserverBlock scheduleTick (Lnet/minecraft/world/WorldView;Lnet/minecraft/world/tick/ScheduledTickView;Lnet/minecraft/util/math/BlockPos;)V
+accessible class net/minecraft/block/entity/BlockEntityType$BlockEntityFactory

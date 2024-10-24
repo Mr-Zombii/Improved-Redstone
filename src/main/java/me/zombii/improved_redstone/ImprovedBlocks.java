@@ -10,16 +10,17 @@ import net.minecraft.block.enums.NoteBlockInstrument;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 import static net.minecraft.block.Blocks.createLightLevelFromLitBlockState;
 
 public class ImprovedBlocks {
-
-    public static Block POWER_LEVEL_BLOCK;
 
     public static Block IMPROVED_REDSTONE_REPEATER;
     public static Block IMPROVED_REDSTONE_COMPARATOR;
@@ -35,20 +36,22 @@ public class ImprovedBlocks {
 
     public static Block RGB_PANEL;
 
-    static Block register(Identifier id, Block block) {
+    static Block register(Identifier id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        Block block = factory.apply(settings.registryKey(RegistryKey.of(RegistryKeys.BLOCK, id)));
         return Registry.register(Registries.BLOCK, id, block);
     }
 
-    static Block register(String name, Block block) {
-        return register(Identifier.of(ImprovedRedstone.MOD_ID, name), block);
+    static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
+        return register(Identifier.of(ImprovedRedstone.MOD_ID, name), factory, settings);
     }
 
-    static Block register(Identifier id, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings) {
-        return register(id, block.apply(settings));
-    }
+    private static AbstractBlock.Settings copyLootTable(Block block, boolean copyTranslationKey) {
+        AbstractBlock.Settings settings2 = AbstractBlock.Settings.create().lootTable(block.getLootTableKey());
+        if (copyTranslationKey) {
+            settings2 = settings2.overrideTranslationKey(block.getTranslationKey());
+        }
 
-    static Block register(String name, Function<AbstractBlock.Settings, Block> block, AbstractBlock.Settings settings) {
-        return register(Identifier.of(ImprovedRedstone.MOD_ID, name), block.apply(settings));
+        return settings2;
     }
 
     public static void registerBlocks() {
@@ -76,9 +79,9 @@ public class ImprovedBlocks {
         IMPROVED_REDSTONE_WALL_TORCH = register(
                 "improved_redstone_wall_torch",
                 ImprovedRedstoneWallTorchBlock::new,
-                AbstractBlock.Settings.create().noCollision().breakInstantly()
+                copyLootTable(IMPROVED_REDSTONE_TORCH, true).noCollision().breakInstantly()
                         .luminance(createLightLevelFromLitBlockState(7))
-                        .sounds(BlockSoundGroup.WOOD).dropsLike(IMPROVED_REDSTONE_TORCH)
+                        .sounds(BlockSoundGroup.WOOD)
                         .pistonBehavior(PistonBehavior.DESTROY)
         );
 
@@ -113,11 +116,7 @@ public class ImprovedBlocks {
         RGB_PANEL = register(
                 "rgb_panel",
                 RGBPanel::new,
-                AbstractBlock.Settings.create().nonOpaque().luminance((state) -> {
-                    if (!state.get(RGBPanel.LIT)) return 0;
-                    if (state.get(RGBPanel.POWER) != 0) return 15;
-                    return 0;
-                })
+                AbstractBlock.Settings.create().nonOpaque().luminance((state) -> state.get(RGBPanel.LIT) ? 15 : 0)
         );
     }
 

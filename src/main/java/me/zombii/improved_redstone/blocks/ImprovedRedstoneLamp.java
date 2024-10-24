@@ -8,6 +8,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.block.WireOrientation;
+import org.jetbrains.annotations.Nullable;
 
 public class ImprovedRedstoneLamp extends RedstoneLampBlock {
     public static final BooleanProperty LIT;
@@ -17,7 +19,7 @@ public class ImprovedRedstoneLamp extends RedstoneLampBlock {
         this.setDefaultState(this.getDefaultState().with(LIT, false));
     }
 
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
         if (!world.isClient) {
             boolean bl = state.get(LIT);
             if (bl != world.isReceivingRedstonePower(pos)) {

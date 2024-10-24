@@ -1,11 +1,16 @@
 package me.zombii.improved_redstone;
 
-import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.item.VerticallyAttachableBlockItem;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
+
+import java.util.function.Function;
 
 public class ImprovedItems {
 
@@ -22,25 +27,28 @@ public class ImprovedItems {
 
     public static Item RGB_PANEL;
 
+    private static Function<Item.Settings, Item> createBlockItemWithUniqueName(Block block) {
+        return (settings) -> new BlockItem(block, settings.useItemPrefixedTranslationKey());
+    }
+
     public static void registerItems() {
         ImprovedItems.IMPROVED_REDSTONE_REPEATER = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_REPEATER);
         ImprovedItems.IMPROVED_REDSTONE_COMPARATOR = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR);
         ImprovedItems.IMPROVED_REDSTONE_LAMP = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_LAMP);
         ImprovedItems.IMPROVED_REDSTONE_TORCH = Items.register(
-                new VerticallyAttachableBlockItem(
-                        ImprovedBlocks.IMPROVED_REDSTONE_TORCH,
-                        ImprovedBlocks.IMPROVED_REDSTONE_WALL_TORCH,
-                        new Item.Settings(),
-                        Direction.DOWN
-                )
+                ImprovedBlocks.IMPROVED_REDSTONE_TORCH,
+                (block, itemSettings) -> new VerticallyAttachableBlockItem(
+                    block,
+                    ImprovedBlocks.IMPROVED_REDSTONE_WALL_TORCH,
+                    Direction.DOWN,
+                    itemSettings
+            )
         );
         ImprovedItems.IMPROVED_OBSERVER = Items.register(ImprovedBlocks.IMPROVED_OBSERVER);
+
         ImprovedItems.IMPROVED_REDSTONE = Items.register(
-                Identifier.of(ImprovedRedstone.MOD_ID, "improved_redstone"),
-                new AliasedBlockItem(
-                        ImprovedBlocks.IMPROVED_REDSTONE,
-                        new Item.Settings()
-                )
+                RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ImprovedRedstone.MOD_ID, "improved_redstone")),
+                createBlockItemWithUniqueName(ImprovedBlocks.IMPROVED_REDSTONE)
         );
         ImprovedItems.IMPROVED_REDSTONE_BLOCK = Items.register(ImprovedBlocks.IMPROVED_REDSTONE_BLOCK);
 

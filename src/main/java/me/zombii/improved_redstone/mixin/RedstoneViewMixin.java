@@ -16,34 +16,17 @@ public interface RedstoneViewMixin extends RedstoneView {
      */
     @Overwrite
     default int getReceivedStrongRedstonePower(BlockPos pos) {
-        int i = 0;
-        i = Math.max(i, this.getStrongRedstonePower(pos.down(), Direction.DOWN));
-        if (i >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
-            return i;
-        } else {
-            i = Math.max(i, this.getStrongRedstonePower(pos.up(), Direction.UP));
-            if (i >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
-                return i;
-            } else {
-                i = Math.max(i, this.getStrongRedstonePower(pos.north(), Direction.NORTH));
-                if (i >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
-                    return i;
-                } else {
-                    i = Math.max(i, this.getStrongRedstonePower(pos.south(), Direction.SOUTH));
-                    if (i >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
-                        return i;
-                    } else {
-                        i = Math.max(i, this.getStrongRedstonePower(pos.west(), Direction.WEST));
-                        if (i >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
-                            return i;
-                        } else {
-                            i = Math.max(i, this.getStrongRedstonePower(pos.east(), Direction.EAST));
-                            return i >= (ImprovedRedstoneWireBlock.MaxStrength - 1) ? i : i;
-                        }
-                    }
-                }
+        int maxPower = 0;
+        Direction[] directions = {Direction.DOWN, Direction.UP, Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST};
+
+        for (Direction direction : directions) {
+            maxPower = Math.max(maxPower, this.getStrongRedstonePower(pos.offset(direction), direction));
+            if (maxPower >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
+                return maxPower;
             }
         }
+
+        return maxPower;
     }
 
 
@@ -54,11 +37,8 @@ public interface RedstoneViewMixin extends RedstoneView {
     @Overwrite
     default int getReceivedRedstonePower(BlockPos pos) {
         int i = 0;
-        Direction[] var3 = DIRECTIONS;
-        int var4 = var3.length;
 
-        for(int var5 = 0; var5 < var4; ++var5) {
-            Direction direction = var3[var5];
+        for (Direction direction : DIRECTIONS) {
             int j = this.getEmittedRedstonePower(pos.offset(direction), direction);
             if (j >= ImprovedRedstoneWireBlock.MaxStrength - 1) {
                 return ImprovedRedstoneWireBlock.MaxStrength - 1;

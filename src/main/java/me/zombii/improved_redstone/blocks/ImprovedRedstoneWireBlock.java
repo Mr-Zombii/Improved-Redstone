@@ -20,14 +20,13 @@ import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Util;
 import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.*;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.*;
+import net.minecraft.world.block.OrientationHelper;
+import net.minecraft.world.block.WireOrientation;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
@@ -48,7 +47,7 @@ public class ImprovedRedstoneWireBlock extends Block {
     private static final Map<Direction, VoxelShape> DIRECTION_TO_SIDE_SHAPE;
     private static final Map<Direction, VoxelShape> DIRECTION_TO_UP_SHAPE;
     private static final Map<BlockState, VoxelShape> SHAPES;
-    private static final Vec3d[] COLORS;
+    private static final int[] COLORS;
     private final BlockState dotState;
     private boolean wiresGivePower = true;
 
@@ -167,14 +166,14 @@ public class ImprovedRedstoneWireBlock extends Block {
                     BlockState blockStateBelow = world.getBlockState(mutable);
                     if (blockStateBelow.isOf(this)) {
                         BlockPos blockPosBelow = mutable.offset(direction.getOpposite());
-                        world.replaceWithStateForNeighborUpdate(direction.getOpposite(), world.getBlockState(blockPosBelow), mutable, blockPosBelow, flags, maxUpdateDepth);
+                        world.replaceWithStateForNeighborUpdate(direction.getOpposite(), blockPosBelow, mutable, world.getBlockState(blockPosBelow), flags, maxUpdateDepth);
                     }
 
                     mutable.set(pos, direction).move(Direction.UP);
                     BlockState blockStateAbove = world.getBlockState(mutable);
                     if (blockStateAbove.isOf(this)) {
                         BlockPos blockPosAbove = mutable.offset(direction.getOpposite());
-                        world.replaceWithStateForNeighborUpdate(direction.getOpposite(), world.getBlockState(blockPosAbove), mutable, blockPosAbove, flags, maxUpdateDepth);
+                        world.replaceWithStateForNeighborUpdate(direction.getOpposite(), blockPosAbove, mutable, world.getBlockState(blockPosAbove), flags, maxUpdateDepth);
                     }
                 }
             }
@@ -323,7 +322,7 @@ public class ImprovedRedstoneWireBlock extends Block {
         var3 = Direction.Type.HORIZONTAL.iterator();
 
         while(var3.hasNext()) {
-            direction = (Direction)var3.next();
+            direction = var3.next();
             BlockPos blockPos = pos.offset(direction);
             if (world.getBlockState(blockPos).isSolidBlock(world, blockPos)) {
                 this.updateNeighbors(world, blockPos.up());
@@ -334,7 +333,7 @@ public class ImprovedRedstoneWireBlock extends Block {
 
     }
 
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
         if (!world.isClient) {
             if (state.canPlaceAt(world, pos)) {
                 this.update(world, pos, state);
@@ -391,20 +390,17 @@ public class ImprovedRedstoneWireBlock extends Block {
     }
 
     public static int getWireColor(int powerLevel) {
-        Vec3d vec3d = COLORS[powerLevel];
-        return MathHelper.packRgb((float)vec3d.getX(), (float)vec3d.getY(), (float)vec3d.getZ());
-//        return MathHelper.packRgb(13, 71, 161);
+        return COLORS[powerLevel];
     }
 
-    private void addPoweredParticles(World world, Random random, BlockPos pos, Vec3d color, Direction direction, Direction direction2, float f, float g) {
+    private void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction direction, Direction direction2, float f, float g) {
         float h = g - f;
         if (!(random.nextFloat() >= 0.2F * h)) {
-            float i = 0.4375F;
             float j = f + h * random.nextFloat();
             double d = 0.5 + (double)(0.4375F * (float)direction.getOffsetX()) + (double)(j * (float)direction2.getOffsetX());
             double e = 0.5 + (double)(0.4375F * (float)direction.getOffsetY()) + (double)(j * (float)direction2.getOffsetY());
             double k = 0.5 + (double)(0.4375F * (float)direction.getOffsetZ()) + (double)(j * (float)direction2.getOffsetZ());
-            world.addParticle(new DustParticleEffect(color.toVector3f(), 1.0F), (double)pos.getX() + d, (double)pos.getY() + e, (double)pos.getZ() + k, 0.0, 0.0, 0.0);
+            world.addParticle(new DustParticleEffect(color, 1.0F), (double)pos.getX() + d, (double)pos.getY() + e, (double)pos.getZ() + k, 0.0, 0.0, 0.0);
         }
     }
 
@@ -432,13 +428,13 @@ public class ImprovedRedstoneWireBlock extends Block {
     protected BlockState rotate(BlockState state, BlockRotation rotation) {
         switch (rotation) {
             case CLOCKWISE_180 -> {
-                return state.with(WIRE_CONNECTION_NORTH, (WireConnection)state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_EAST, (WireConnection)state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_NORTH)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_EAST));
+                return state.with(WIRE_CONNECTION_NORTH, state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_EAST, state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_NORTH)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_EAST));
             }
             case COUNTERCLOCKWISE_90 -> {
-                return state.with(WIRE_CONNECTION_NORTH, (WireConnection)state.get(WIRE_CONNECTION_EAST)).with(WIRE_CONNECTION_EAST, (WireConnection)state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_NORTH));
+                return state.with(WIRE_CONNECTION_NORTH, state.get(WIRE_CONNECTION_EAST)).with(WIRE_CONNECTION_EAST, state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_NORTH));
             }
             case CLOCKWISE_90 -> {
-                return state.with(WIRE_CONNECTION_NORTH, (WireConnection)state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_EAST, (WireConnection)state.get(WIRE_CONNECTION_NORTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_EAST)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_SOUTH));
+                return state.with(WIRE_CONNECTION_NORTH, state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_EAST, state.get(WIRE_CONNECTION_NORTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_EAST)).with(WIRE_CONNECTION_WEST, state.get(WIRE_CONNECTION_SOUTH));
             }
             default -> {
                 return state;
@@ -449,10 +445,10 @@ public class ImprovedRedstoneWireBlock extends Block {
     protected BlockState mirror(BlockState state, BlockMirror mirror) {
         switch (mirror) {
             case LEFT_RIGHT -> {
-                return state.with(WIRE_CONNECTION_NORTH, (WireConnection)state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_NORTH));
+                return state.with(WIRE_CONNECTION_NORTH, state.get(WIRE_CONNECTION_SOUTH)).with(WIRE_CONNECTION_SOUTH, (WireConnection)state.get(WIRE_CONNECTION_NORTH));
             }
             case FRONT_BACK -> {
-                return state.with(WIRE_CONNECTION_EAST, (WireConnection)state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_EAST));
+                return state.with(WIRE_CONNECTION_EAST, state.get(WIRE_CONNECTION_WEST)).with(WIRE_CONNECTION_WEST, (WireConnection)state.get(WIRE_CONNECTION_EAST));
             }
             default -> {
                 return super.mirror(state, mirror);
@@ -484,11 +480,12 @@ public class ImprovedRedstoneWireBlock extends Block {
     }
 
     private void updateForNewState(World world, BlockPos pos, BlockState oldState, BlockState newState) {
+        WireOrientation wireOrientation = OrientationHelper.getEmissionOrientation(world, null, Direction.UP);
 
         for (Direction direction : Direction.Type.HORIZONTAL) {
             BlockPos blockPos = pos.offset(direction);
             if (oldState.get(DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction)).isConnected() != ((WireConnection) newState.get((Property) DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction))).isConnected() && world.getBlockState(blockPos).isSolidBlock(world, blockPos)) {
-                world.updateNeighborsExcept(blockPos, newState.getBlock(), direction.getOpposite());
+                world.updateNeighborsExcept(blockPos, newState.getBlock(), direction.getOpposite(), OrientationHelper.withFrontNullable(wireOrientation, direction));
             }
         }
 
@@ -506,17 +503,16 @@ public class ImprovedRedstoneWireBlock extends Block {
         DIRECTION_TO_UP_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, VoxelShapes.union(DIRECTION_TO_SIDE_SHAPE.get(Direction.NORTH), Block.createCuboidShape(3.0, 0.0, 0.0, 13.0, 16.0, 1.0)), Direction.SOUTH, VoxelShapes.union(DIRECTION_TO_SIDE_SHAPE.get(Direction.SOUTH), Block.createCuboidShape(3.0, 0.0, 15.0, 13.0, 16.0, 16.0)), Direction.EAST, VoxelShapes.union((VoxelShape)DIRECTION_TO_SIDE_SHAPE.get(Direction.EAST), Block.createCuboidShape(15.0, 0.0, 3.0, 16.0, 16.0, 13.0)), Direction.WEST, VoxelShapes.union(DIRECTION_TO_SIDE_SHAPE.get(Direction.WEST), Block.createCuboidShape(0.0, 0.0, 3.0, 1.0, 16.0, 13.0))));
         SHAPES = Maps.newHashMap();
 
-        COLORS = Util.make(new Vec3d[MaxStrength], (colors) -> {
+        COLORS = Util.make(new int[MaxStrength], (colors) -> {
             for(int i = 0; i <= MaxStrength - 1; ++i) {
                 float f = ((float)i / (MaxStrength - 1));
                 f = 1 - f;
                 float r = 255 * (1 - f);
                 float g = 96 * (1 - f);
                 float b = 0 * (1 - f);
-                colors[i] = new Vec3d(r / 255, g / 255, b / 255);
+                colors[i] = ColorHelper.fromFloats(1f, r / 255f, g / 255f, b / 255f);
 //                colors[i] = new Vec3d(0, 0.541F, 1);
             }
-
         });
     }
 }

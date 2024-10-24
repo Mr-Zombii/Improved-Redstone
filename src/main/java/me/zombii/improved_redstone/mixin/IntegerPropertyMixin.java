@@ -1,6 +1,5 @@
 package me.zombii.improved_redstone.mixin;
 
-import com.google.common.collect.Table;
 import it.unimi.dsi.fastutil.objects.Reference2ObjectArrayMap;
 import net.minecraft.state.State;
 import net.minecraft.state.property.IntProperty;
@@ -10,14 +9,16 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
+import java.util.Map;
+
 @Mixin(State.class)
 public class IntegerPropertyMixin<O, S> {
 
     @Shadow @Final private Reference2ObjectArrayMap<Property<?>, Comparable<?>> propertyMap;
 
-    @Shadow private Table<Property<?>, Comparable<?>, S> withTable;
-
     @Shadow @Final protected O owner;
+
+    @Shadow private Map<Property<?>, S[]> withMap;
 
     /**
      * @author Mr_Zombii
@@ -33,19 +34,20 @@ public class IntegerPropertyMixin<O, S> {
 
     public <T extends Comparable<T>, V extends T> S withi(Property<T> property, V value) {
         Comparable<?> comparable = this.propertyMap.get(property);
-        String var10002;
         if (comparable == null) {
-            var10002 = String.valueOf(property);
-            throw new IllegalArgumentException("Cannot set property " + var10002 + " as it does not exist in " + String.valueOf(this.owner));
-        } else if (comparable.equals(value)) {
-            return (S) this;
+            String var10002 = String.valueOf(property);
+            throw new IllegalArgumentException("Cannot set property " + var10002 + " as it does not exist in " + this.owner);
         } else {
-            S object = this.withTable.get(property, value);
-            if (object == null) {
-                var10002 = String.valueOf(property);
-                throw new IllegalArgumentException("Cannot set property " + var10002 + " to " + String.valueOf(value) + " on " + String.valueOf(this.owner) + ", it is not an allowed value");
+            if (comparable.equals(value)) {
+                return (S) this;
             } else {
-                return object;
+                int i = property.ordinal(value);
+                if (i < 0) {
+                    String var10002 = String.valueOf(property);
+                    throw new IllegalArgumentException("Cannot set property " + var10002 + " to " + value + " on " + this.owner + ", it is not an allowed value");
+                } else {
+                    return (S) ((Object[])this.withMap.get(property))[i];
+                }
             }
         }
     }

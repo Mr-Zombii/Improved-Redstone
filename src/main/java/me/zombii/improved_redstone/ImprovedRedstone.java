@@ -20,6 +20,7 @@ public class ImprovedRedstone implements ModInitializer {
 	public void onInitialize() {
 		ImprovedBlocks.registerBlocks();
 		ImprovedItems.registerItems();
+		ImprovedBlockEntityTypes.register();
 
 		LOGGER.info("Registered Blocks & Items");
 

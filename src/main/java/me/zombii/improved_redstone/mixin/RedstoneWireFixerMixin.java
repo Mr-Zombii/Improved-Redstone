@@ -27,17 +27,17 @@ import java.util.Map;
 @Mixin(RedstoneWireBlock.class)
 public abstract class RedstoneWireFixerMixin {
 
-    @Shadow @Final private static Vec3d[] COLORS;
+    @Shadow @Final private static int[] COLORS;
 
     @Shadow @Final public static IntProperty POWER;
 
     @Shadow @Final public static Map<Direction, EnumProperty<WireConnection>> DIRECTION_TO_WIRE_CONNECTION_PROPERTY;
 
-    @Shadow protected abstract void addPoweredParticles(World world, Random random, BlockPos pos, Vec3d color, Direction direction, Direction direction2, float f, float g);
-
     @Shadow private boolean wiresGivePower;
 
-    @Shadow protected abstract int increasePower(BlockState state);
+    @Shadow
+    private static void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction perpendicular, Direction direction, float minOffset, float maxOffset) {
+    }
 
     /**
      * @author Mr_Zombii
@@ -46,8 +46,7 @@ public abstract class RedstoneWireFixerMixin {
     @Overwrite
     public static int getWireColor(int powerLevel) {
         if (powerLevel >= 15) powerLevel = 15;
-        Vec3d vec3d = COLORS[powerLevel];
-        return MathHelper.packRgb((float)vec3d.getX(), (float)vec3d.getY(), (float)vec3d.getZ());
+        return COLORS[powerLevel];
     }
 
     /**
@@ -65,13 +64,13 @@ public abstract class RedstoneWireFixerMixin {
                 WireConnection wireConnection = state.get(DIRECTION_TO_WIRE_CONNECTION_PROPERTY.get(direction));
                 switch (wireConnection) {
                     case UP:
-                        this.addPoweredParticles(world, random, pos, COLORS[i], direction, Direction.UP, -0.5F, 0.5F);
+                        addPoweredParticles(world, random, pos, COLORS[i], direction, Direction.UP, -0.5F, 0.5F);
                     case SIDE:
-                        this.addPoweredParticles(world, random, pos, COLORS[i], Direction.DOWN, direction, 0.0F, 0.5F);
+                        addPoweredParticles(world, random, pos, COLORS[i], Direction.DOWN, direction, 0.0F, 0.5F);
                         break;
                     case NONE:
                     default:
-                        this.addPoweredParticles(world, random, pos, COLORS[i], Direction.DOWN, direction, 0.0F, 0.3F);
+                        addPoweredParticles(world, random, pos, COLORS[i], Direction.DOWN, direction, 0.0F, 0.3F);
                 }
             }
 
@@ -88,35 +87,12 @@ public abstract class RedstoneWireFixerMixin {
      * @reason forcing `int i` to be 15 to prevent power level related crashes from happening
      */
     @Overwrite
-    private int getReceivedRedstonePower(World world, BlockPos pos) {
+    public int getStrongPower(World world, BlockPos pos) {
         this.wiresGivePower = false;
         int i = world.getReceivedRedstonePower(pos);
         if (i >= 15) i = 15;
-
         this.wiresGivePower = true;
-        int j = 0;
-        if (i < 15) {
-            Iterator<Direction> var5 = Direction.Type.HORIZONTAL.iterator();
-
-            while (true) {
-                while (var5.hasNext()) {
-                    Direction direction = var5.next();
-                    BlockPos blockPos = pos.offset(direction);
-                    BlockState blockState = world.getBlockState(blockPos);
-                    j = Math.max(j, this.increasePower(blockState));
-                    BlockPos blockPos2 = pos.up();
-                    if (blockState.isSolidBlock(world, blockPos) && !world.getBlockState(blockPos2).isSolidBlock(world, blockPos2)) {
-                        j = Math.max(j, this.increasePower(world.getBlockState(blockPos.up())));
-                    } else if (!blockState.isSolidBlock(world, blockPos)) {
-                        j = Math.max(j, this.increasePower(world.getBlockState(blockPos.down())));
-                    }
-                }
-
-                return Math.max(i, j - 1);
-            }
-        } else {
-            return i;
-        }
+        return i;
     }
 
 }
