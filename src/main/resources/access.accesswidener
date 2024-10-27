@@ -6,3 +6,4 @@ accessible field net/minecraft/state/property/IntProperty max I
 accessible field net/minecraft/state/property/IntProperty min I
 accessible method net/minecraft/block/ObserverBlock scheduleTick (Lnet/minecraft/world/WorldView;Lnet/minecraft/world/tick/ScheduledTickView;Lnet/minecraft/util/math/BlockPos;)V
 accessible class net/minecraft/block/entity/BlockEntityType$BlockEntityFactory
+accessible method net/minecraft/block/RedstoneWireBlock getShapeForState (Lnet/minecraft/block/BlockState;)Lnet/minecraft/util/shape/VoxelShape;

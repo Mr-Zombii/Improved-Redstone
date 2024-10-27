@@ -17,19 +17,19 @@
       "y": 270
     },
     "facing=north,lit=false": {
-      "model": "improved_redstone:block/rgb_panel_off",
+      "model": "improved_redstone:block/rgb_panel",
       "y": 0
     },
     "facing=east,lit=false": {
-      "model": "improved_redstone:block/rgb_panel_off",
+      "model": "improved_redstone:block/rgb_panel",
       "y": 90
     },
     "facing=south,lit=false": {
-      "model": "improved_redstone:block/rgb_panel_off",
+      "model": "improved_redstone:block/rgb_panel",
       "y": 180
     },
     "facing=west,lit=false": {
-      "model": "improved_redstone:block/rgb_panel_off",
+      "model": "improved_redstone:block/rgb_panel",
       "y": 270
     }
   }
