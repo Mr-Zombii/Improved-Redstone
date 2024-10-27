@@ -7,12 +7,8 @@
     " # "
   ],
   "key": {
-    "#": {
-      "item": "improved_redstone:improved_redstone"
-    },
-    "G": {
-      "item": "minecraft:glowstone"
-    }
+    "#": "improved_redstone:improved_redstone",
+    "G": "minecraft:glowstone"
   },
   "result": {
     "id": "improved_redstone:improved_redstone_lamp",

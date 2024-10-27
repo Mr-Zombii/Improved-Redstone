@@ -6,12 +6,8 @@
     "/"
   ],
   "key": {
-    "#": {
-      "item": "improved_redstone:improved_redstone"
-    },
-    "/": {
-      "item": "minecraft:stick"
-    }
+    "#": "improved_redstone:improved_redstone",
+    "/": "minecraft:stick"
   },
   "result": {
     "id": "improved_redstone:improved_redstone_torch",

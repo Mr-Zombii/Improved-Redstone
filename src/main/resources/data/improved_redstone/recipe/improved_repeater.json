@@ -6,15 +6,9 @@
     "CCC"
   ],
   "key": {
-    "#": {
-      "item": "improved_redstone:improved_redstone_torch"
-    },
-    "G": {
-      "item": "improved_redstone:improved_redstone"
-    },
-    "C": {
-      "item": "minecraft:cobblestone"
-    }
+    "#": "improved_redstone:improved_redstone_torch",
+    "G": "improved_redstone:improved_redstone",
+    "C": "minecraft:cobblestone"
   },
   "result": {
     "id": "improved_redstone:improved_repeater",

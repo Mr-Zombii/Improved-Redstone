@@ -7,15 +7,9 @@
     "###"
   ],
   "key": {
-    "#": {
-      "item": "minecraft:cobblestone"
-    },
-    "G": {
-      "item": "improved_redstone:improved_redstone"
-    },
-    "Q": {
-      "item": "minecraft:quartz"
-    }
+    "#": "minecraft:cobblestone",
+    "G": "improved_redstone:improved_redstone",
+    "Q": "minecraft:quartz"
   },
   "result": {
     "id": "improved_redstone:improved_observer",

@@ -7,27 +7,13 @@
     "HKZ"
   ],
   "key": {
-    "i": {
-      "item": "minecraft:iron_ingot"
-    },
-    "G": {
-      "item": "improved_redstone:improved_redstone"
-    },
-    "R": {
-      "item": "minecraft:redstone_lamp"
-    },
-    "B": {
-      "item": "minecraft:blaze_powder"
-    },
-    "H": {
-      "item": "minecraft:red_dye"
-    },
-    "K": {
-      "item": "minecraft:green_dye"
-    },
-    "Z": {
-      "item": "minecraft:blue_dye"
-    }
+    "i": "minecraft:iron_ingot",
+    "G": "improved_redstone:improved_redstone",
+    "R": "minecraft:redstone_lamp",
+    "B": "minecraft:blaze_powder",
+    "H": "minecraft:red_dye",
+    "K": "minecraft:green_dye",
+    "Z": "minecraft:blue_dye"
   },
   "result": {
     "id": "improved_redstone:rgb_panel",

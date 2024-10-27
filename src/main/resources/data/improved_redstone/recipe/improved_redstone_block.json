@@ -7,9 +7,7 @@
     "GGG"
   ],
   "key": {
-    "G": {
-      "item": "improved_redstone:improved_redstone"
-    }
+    "G": "improved_redstone:improved_redstone"
   },
   "result": {
     "id": "improved_redstone:improved_redstone_block",

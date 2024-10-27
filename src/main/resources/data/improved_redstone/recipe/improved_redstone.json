@@ -7,15 +7,9 @@
     " B "
   ],
   "key": {
-    "#": {
-      "item": "minecraft:orange_dye"
-    },
-    "B": {
-      "item": "minecraft:blaze_powder"
-    },
-    "R": {
-      "item": "minecraft:redstone"
-    }
+    "#": "minecraft:orange_dye",
+    "B": "minecraft:blaze_powder",
+    "R": "minecraft:redstone"
   },
   "result": {
     "id": "improved_redstone:improved_redstone",
