@@ -1,18 +1,12 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "redstone",
-  "pattern": [
-    " # ",
-    "BRB",
-    " B "
+  "ingredients": [
+    "minecraft:blaze_powder",
+    "minecraft:redstone"
   ],
-  "key": {
-    "#": "minecraft:orange_dye",
-    "B": "minecraft:blaze_powder",
-    "R": "minecraft:redstone"
-  },
   "result": {
     "id": "improved_redstone:improved_redstone",
-    "count": 1
+    "count": 2
   }
 }
