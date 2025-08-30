@@ -37,21 +37,12 @@ public class ImprovedBlocks {
     public static Block RGB_PANEL;
 
     static Block register(Identifier id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
-        Block block = factory.apply(settings.registryKey(RegistryKey.of(RegistryKeys.BLOCK, id)));
+        Block block = factory.apply(settings);
         return Registry.register(Registries.BLOCK, id, block);
     }
 
     static Block register(String name, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
         return register(Identifier.of(ImprovedRedstone.MOD_ID, name), factory, settings);
-    }
-
-    private static AbstractBlock.Settings copyLootTable(Block block, boolean copyTranslationKey) {
-        AbstractBlock.Settings settings2 = AbstractBlock.Settings.create().lootTable(block.getLootTableKey());
-        if (copyTranslationKey) {
-            settings2 = settings2.overrideTranslationKey(block.getTranslationKey());
-        }
-
-        return settings2;
     }
 
     public static void registerBlocks() {
@@ -79,10 +70,11 @@ public class ImprovedBlocks {
         IMPROVED_REDSTONE_WALL_TORCH = register(
                 "improved_redstone_wall_torch",
                 ImprovedRedstoneWallTorchBlock::new,
-                copyLootTable(IMPROVED_REDSTONE_TORCH, true).noCollision().breakInstantly()
+                AbstractBlock.Settings.create().noCollision().breakInstantly()
                         .luminance(createLightLevelFromLitBlockState(7))
                         .sounds(BlockSoundGroup.WOOD)
                         .pistonBehavior(PistonBehavior.DESTROY)
+                        .dropsLike(IMPROVED_REDSTONE_TORCH)
         );
 
         IMPROVED_REDSTONE_LAMP = register(

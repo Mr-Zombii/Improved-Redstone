@@ -10,8 +10,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.block.WireOrientation;
-import org.jetbrains.annotations.Nullable;
+import net.minecraft.world.WorldAccess;
 
 public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
 
@@ -24,7 +23,7 @@ public class ImprovedRedstoneWallTorchBlock extends WallRedstoneTorchBlock {
     }
 
     @Override
-    public void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (state.get(LIT) == this.shouldUnpower(world, pos, state) && !world.getBlockTickScheduler().isTicking(pos, this)) {
             world.scheduleBlockTick(pos, this, -1);
         }

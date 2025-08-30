@@ -14,8 +14,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
-import net.minecraft.world.tick.ScheduledTickView;
 
 public class ImprovedObserverBlock extends ObserverBlock {
     public static final BooleanProperty POWERED;
@@ -44,12 +42,12 @@ public class ImprovedObserverBlock extends ObserverBlock {
         this.updateNeighbors(world, pos, state);
     }
 
-    protected BlockState getStateForNeighborUpdate(BlockState state, WorldView world, ScheduledTickView tickView, BlockPos pos, Direction direction, BlockPos neighborPos, BlockState neighborState, Random random) {
+    protected BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
         if (state.get(FACING) == direction && !(Boolean)state.get(POWERED)) {
-            this.scheduleTick(world, tickView, pos);
+            this.scheduleTick(world, pos);
         }
 
-        return super.getStateForNeighborUpdate(state, world, tickView, pos, direction, neighborPos, neighborState, random);
+        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
     }
 
     protected int getWeakRedstonePower(BlockState state, BlockView world, BlockPos pos, Direction direction) {

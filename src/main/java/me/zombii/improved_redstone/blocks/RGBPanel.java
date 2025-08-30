@@ -16,10 +16,10 @@ import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ColorHelper;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockRenderView;
 import net.minecraft.world.World;
-import net.minecraft.world.block.WireOrientation;
 import org.jetbrains.annotations.Nullable;
 
 import java.awt.*;
@@ -31,12 +31,12 @@ public class RGBPanel extends HorizontalFacingBlock implements BlockEntityProvid
     public static final int[] COLORS = new int[ImprovedRedstoneWireBlock.MaxStrength];
 
     public static int rgb01(float r, float g, float b) {
-        return ColorHelper.fromFloats(1F, r, g, b);
+        return MathHelper.packRgb(r, g, b);
     }
 
     public static int toRGB(String rgb) {
         Color c = Color.decode(rgb);
-        return ColorHelper.fromFloats(1, c.getRed() / 255f, c.getGreen() / 255f, c.getBlue() / 255f);
+        return MathHelper.packRgb(c.getRed() / 255f, c.getGreen() / 255f, c.getBlue() / 255f);
     }
 
     static {
@@ -121,7 +121,7 @@ public class RGBPanel extends HorizontalFacingBlock implements BlockEntityProvid
     }
 
     @Override
-    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, @Nullable WireOrientation wireOrientation, boolean notify) {
+    protected void neighborUpdate(BlockState state, World world, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify) {
         if (!world.isClient) {
             int power = world.getEmittedRedstonePower(pos.offset(state.get(FACING).getOpposite()), state.get(FACING).getOpposite());
             boolean isGettingPower = power > 0;

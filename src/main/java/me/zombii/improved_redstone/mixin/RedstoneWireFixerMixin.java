@@ -27,7 +27,7 @@ import java.util.Map;
 @Mixin(RedstoneWireBlock.class)
 public abstract class RedstoneWireFixerMixin {
 
-    @Shadow @Final private static int[] COLORS;
+//    @Shadow @Final private static int[] COLORS;
 
     @Shadow @Final public static IntProperty POWER;
 
@@ -35,9 +35,13 @@ public abstract class RedstoneWireFixerMixin {
 
     @Shadow private boolean wiresGivePower;
 
-    @Shadow
-    private static void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction perpendicular, Direction direction, float minOffset, float maxOffset) {
-    }
+//    @Shadow
+//    private static void addPoweredParticles(World world, Random random, BlockPos pos, int color, Direction perpendicular, Direction direction, float minOffset, float maxOffset) {
+//    }
+
+    @Shadow protected abstract void addPoweredParticles(World world, Random random, BlockPos pos, Vec3d color, Direction direction, Direction direction2, float f, float g);
+
+    @Shadow @Final private static Vec3d[] COLORS;
 
     /**
      * @author Mr_Zombii
@@ -45,8 +49,8 @@ public abstract class RedstoneWireFixerMixin {
      */
     @Overwrite
     public static int getWireColor(int powerLevel) {
-        if (powerLevel >= 15) powerLevel = 15;
-        return COLORS[powerLevel];
+        Vec3d vec3d = COLORS[powerLevel];
+        return MathHelper.packRgb((float)vec3d.getX(), (float)vec3d.getY(), (float)vec3d.getZ());
     }
 
     /**
@@ -82,17 +86,17 @@ public abstract class RedstoneWireFixerMixin {
         if (state.isOf(ImprovedBlocks.RGB_PANEL)) cir.setReturnValue(dir == state.get(RGBPanel.FACING));
     }
 
-    /**
-     * @author Mr_Zombii
-     * @reason forcing `int i` to be 15 to prevent power level related crashes from happening
-     */
-    @Overwrite
-    public int getStrongPower(World world, BlockPos pos) {
-        this.wiresGivePower = false;
-        int i = world.getReceivedRedstonePower(pos);
-        if (i >= 15) i = 15;
-        this.wiresGivePower = true;
-        return i;
-    }
+//    /**
+//     * @author Mr_Zombii
+//     * @reason forcing `int i` to be 15 to prevent power level related crashes from happening
+//     */
+//    @Overwrite
+//    public int getStrongPower(World world, BlockPos pos) {
+//        this.wiresGivePower = false;
+//        int i = world.getReceivedRedstonePower(pos);
+//        if (i >= 15) i = 15;
+//        this.wiresGivePower = true;
+//        return i;
+//    }
 
 }

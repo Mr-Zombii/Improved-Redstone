@@ -1,5 +1,6 @@
 package me.zombii.improved_redstone;
 
+import com.mojang.datafixers.types.Type;
 import me.zombii.improved_redstone.blocks.entities.ImprovedComparatorBlockEntity;
 import me.zombii.improved_redstone.blocks.entities.RGBPanelBlockEntity;
 import net.minecraft.block.Block;
@@ -23,27 +24,17 @@ public class ImprovedBlockEntityTypes {
     public static BlockEntityType<RGBPanelBlockEntity> RGB_PANEL;
 
     public static void register() {
-        IMRPOVED_COMPARATOR = create("comparator", ImprovedComparatorBlockEntity::new, ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR);
-        RGB_PANEL = create("rgb_panel", RGBPanelBlockEntity::new, ImprovedBlocks.RGB_PANEL);
+        IMRPOVED_COMPARATOR = create("comparator", BlockEntityType.Builder.create(ImprovedComparatorBlockEntity::new, ImprovedBlocks.IMPROVED_REDSTONE_COMPARATOR));
+        RGB_PANEL = create("rgb_panel", BlockEntityType.Builder.create(RGBPanelBlockEntity::new, ImprovedBlocks.RGB_PANEL));
     }
 
-    private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.BlockEntityFactory<? extends T> blockEntityFactory, Block... blocks) {
-        if (blocks.length == 0) {
+    private static <T extends BlockEntity> BlockEntityType<T> create(String id, BlockEntityType.Builder<T> builder) {
+        if (builder.blocks.isEmpty()) {
             LOGGER.warn("Block entity type {} requires at least one valid block to be defined!", id);
         }
 
-        Util.getChoiceType(TypeReferences.BLOCK_ENTITY, String.valueOf(Identifier.of(ImprovedRedstone.MOD_ID, id)));
-        BlockEntityType type;
-        try {
-            Constructor<?> constructor = BlockEntityType.class.getDeclaredConstructor(BlockEntityType.BlockEntityFactory.class, Set.class);
-            constructor.setAccessible(true);
-            type = (BlockEntityType) constructor.newInstance(blockEntityFactory, Set.of(blocks));
-        } catch (NoSuchMethodException | InvocationTargetException | InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-        return Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(ImprovedRedstone.MOD_ID, id), type);
+        Type<?> type = Util.getChoiceType(TypeReferences.BLOCK_ENTITY, id);
+        return (BlockEntityType)Registry.register(Registries.BLOCK_ENTITY_TYPE, Identifier.of(ImprovedRedstone.MOD_ID, id), builder.build(type));
     }
 
 
